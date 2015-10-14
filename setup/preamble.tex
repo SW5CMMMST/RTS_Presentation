@@ -1,0 +1,41 @@
+\documentclass[t]{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+
+\mode<presentation>
+{
+  \usetheme{Madrid}       % or try default, Darmstadt, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{professionalfonts}    % or try default, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \definecolor{aaublue}{RGB}{33,26,82}% dark blue
+  \definecolor{ReneOrange}{RGB}{255,100,0}
+  \definecolor{Blaaligfarve}{RGB}{57,51,136}   
+  \definecolor{Mindreblaaligfarve}{RGB}{89,78,191}  
+
+  \colorlet{beamer@blendedblue}{aaublue}
+} 
+
+\setbeamercolor{block title}{bg=Blaaligfarve, fg=white}
+\setbeamercolor{alertblock title}{bg=Blaaligfarve, fg=white}
+\setbeamercolor{exampleblock title}{bg=ReneOrange, fg=white}
+
+\setbeamercolor{date in head/foot}{bg=Mindreblaaligfarve, fg=white}
+\setbeamercolor{title in head/foot}{bg=Blaaligfarve, fg=white}
+\setbeamercolor{author in head/foot}{bg=aaublue, fg=white}
+
+
+\newtheorem{blueblock}{Example}
+\newtheorem{orangeblock}{Example}
+\newenvironment<>{blueblock}[1][]{%
+  \setbeamercolor{block title example}{fg=white,bg=Blaaligfarve}%
+  \begin{example}#2[#1]}{\end{example}}
+\newenvironment<>{orangeblock}[1][]{%
+  \setbeamercolor{block title example}{fg=white,bg=ReneOrange}%
+  \begin{example}#2[#1]}{\end{example}}
+
+\title[Arduino over 433 MHz]{Arduino peer-to-peer over 433 MHz}
+\author{SW503}
+\date{19 OCT 2015}
