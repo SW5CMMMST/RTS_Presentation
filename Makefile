@@ -15,3 +15,6 @@ pdflatex: master.tex
 	pdflatex --synctex=1 master.tex
 clean:
 	git clean -x -f -e master.pdf
+
+live: clean
+	latexmk -pvc -pdflatex='pdflatex -file-line-error -synctex=1' -pdf master.tex
