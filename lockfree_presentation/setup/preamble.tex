@@ -1,0 +1,36 @@
+\documentclass[t]{beamer}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{tikz} 
+\usepackage{caption}
+\usepackage{lmodern}
+\usetikzlibrary{arrows}   
+
+\mode<presentation>
+{
+  \usetheme{Madrid}       % or try default, Darmstadt, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{professionalfonts}    % or try default, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \definecolor{aaublue}{RGB}{33,26,82}% dark blue
+  \definecolor{ReneOrange}{RGB}{255,100,0}
+  \definecolor{Blaaligfarve}{RGB}{58,52,137}   
+  \definecolor{Mindreblaaligfarve}{RGB}{89,79,191}  
+
+  \colorlet{beamer@blendedblue}{aaublue}
+} 
+
+\setbeamercolor{date in head/foot}{bg=Mindreblaaligfarve, fg=white}
+\setbeamercolor{title in head/foot}{bg=Blaaligfarve, fg=white}
+\setbeamercolor{author in head/foot}{bg=aaublue, fg=white}
+\setbeamercolor{block title}{bg=Blaaligfarve, fg=white}
+\setbeamercolor{block title alerted}{bg=Blaaligfarve, fg=white}
+\setbeamercolor{block title example}{bg=ReneOrange, fg=white}
+
+\title[Lock-free Datastructures]{Lock-free Datastructures}
+\subtitle{RTS - Presentation}
+\author{sw503-e15}
+\date{23 nov 2015}
+
