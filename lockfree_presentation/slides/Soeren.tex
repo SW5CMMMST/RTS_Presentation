@@ -7,9 +7,9 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{What are lock-free datastructures?}
+\begin{frame}[fragile]{What are lock-free datastructures?}
 \framesubtitle{Compare and Swap}
-	\begin{lstlisting}
+\begin{lstlisting}[language=C,breaklines=true]
 bool CAS(int* addr, int expected, int value) {
 	if (*addr == expected) {
 	  *addr = value;
@@ -17,5 +17,5 @@ bool CAS(int* addr, int expected, int value) {
 	}
 	return false;
 } 
-	\end{lstlisting}
+\end{lstlisting}
 \end{frame}
