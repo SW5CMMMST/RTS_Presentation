@@ -1,19 +1,21 @@
-\begin{frame}
-\frametitle{What are lock-free datastructures?}
+\begin{frame}{What are lock-free datastructures?}
 	\begin{block}{Compared to locked-datastructures}
 		\begin{itemize}
 			\item Datastructure using a standard \textcolor{ReneOrange}{read}.
 			\item \textcolor{ReneOrange}{Updating} is another story.
 		\end{itemize}
 	\end{block}
+\end{frame}
 
+\begin{frame}{What are lock-free datastructures?}
+\framesubtitle{Compare and Swap}
 	\begin{lstlisting}
 bool CAS(int* addr, int expected, int value) {
 	if (*addr == expected) {
-		*addr = value;
-		return true;
-		}
+	  *addr = value;
+	  return true;
+	}
 	return false;
-}  
+} 
 	\end{lstlisting}
 \end{frame}
