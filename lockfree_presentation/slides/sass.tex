@@ -1,4 +1,42 @@
-\begin{frame}{Implementing lock-free datastructures}
+\begin{frame}[fragile]{Implementing lock-free datastructures}
+\begin{block}{Simple Stack}<1->
+\begin{lstlisting}[style=customc]
+class Node {
+    Node * next;
+    int data;
+};
+Node * head;
+\end{lstlisting}
+\end{block} 
+
+\begin{block}{Lock-free push}<2>
+\begin{lstlisting}[style=customc]
+void push(int t) {
+    Node* node = new Node(t);
+    do {
+        node->next = head;
+    } while (!cas(&head, node, node->next));
+}
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Implementing lock-free datastructures} 
+\begin{block}{Lock-free pop}
+\begin{lstlisting}[style=customc]
+bool pop(int& t) {
+    Node* current = head;
+    while(current) {
+        if(cas(&head, current->next, current)) {
+            t = current->data;
+            return true;
+        }
+        current = head;
+    }
+    return false;
+}
+\end{lstlisting}
+\end{block}
 
 \end{frame}
 
