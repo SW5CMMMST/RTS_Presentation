@@ -46,8 +46,10 @@ master.pdf
 *.nav
 *.out
 *.snm
-*.synctex.gz
+*.synctex.gz*
 *.fdb_latexmk
+*.vrb
+*.un*
 
 master.thm
 
