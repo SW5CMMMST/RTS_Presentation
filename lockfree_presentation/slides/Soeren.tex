@@ -3,8 +3,16 @@
 		\begin{itemize}
 			\item Datastructure using a standard \textcolor{ReneOrange}{read}.
 			\item \textcolor{ReneOrange}{Updating} is another story.
-			\item Atomic Read-Modify-Write Operation
+			\item Atomic \textcolor{ReneOrange}{Read-Modify-Write} Operation
 			\item Help from hardware
+		\end{itemize}
+	\end{block}
+	\begin{block}{How does update work?}
+		\begin{itemize}
+			\item Obtain the pointer
+			\item Make a copy of the data from the pointer
+			\item Update the copied data
+			\item \textcolor{ReneOrange}{Compare-and-Swap} the pointers
 		\end{itemize}
 	\end{block}
 
