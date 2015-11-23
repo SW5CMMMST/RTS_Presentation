@@ -39,16 +39,6 @@ bool pop(int &data) {
 \end{frame}
 
 \begin{frame}[allowframebreaks]{When to use lock-free programming}
-    \begin{block}{Cons}
-    \begin{itemize}
-        \item Implementation is tricky and difficult
-        \item ABA Problem
-        \item Lock-free is \textcolor{ReneOrange}{not wait-free}
-        \item No guarentee that a thread will terminate (it may wait forever)
-        \item \textcolor{ReneOrange}{Memmory barriers} are needed
-    \end{itemize}
-    \end{block}
-
     \begin{block}{Pros}
     \begin{itemize}
         \item Can improve speed (e.g. in liked lists where long traversals can occur)
@@ -57,7 +47,17 @@ bool pop(int &data) {
         \item \textcolor{ReneOrange}{No deadlocks!}
         \item Useful when lock are not available for shared data (e.g. interrupt handlers)
     \end{itemize}
-    \end{block}
+    \end{block}  
+    
+    \begin{block}{Cons}
+    \begin{itemize}
+        \item Implementation is tricky and difficult
+        \item ABA Problem
+        \item Lock-free is \textcolor{ReneOrange}{not wait-free}
+        \item No guarentee that a thread will terminate (it may wait forever)
+        \item \textcolor{ReneOrange}{Memmory barriers} are needed
+    \end{itemize}
+    \end{block}   
     
     \begin{exampleblock}{Conclusion}
         Should only be used as a last resort, but can be very powerfull when implemented properly
