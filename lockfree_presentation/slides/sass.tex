@@ -1,7 +1,65 @@
-\begin{frame}{Implementing lock-free datastructures}
+\begin{frame}[fragile,allowframebreaks]{Implementing lock-free datastructures}
+\begin{block}{Simple Stack}
+\begin{lstlisting}[style=customc]
+class Node {
+    Node * next;
+    int data;
+};
+Node * head; //Stable stack head
+\end{lstlisting}
+\end{block} 
+
+\begin{block}{Lock-free push}
+\begin{lstlisting}[style=customc]
+void push(int t) {
+    Node* node = new Node(t);
+    do {
+        node->next = head;
+    } while (!cas(&head, node, node->next));
+}
+\end{lstlisting}
+\end{block}
+
+\begin{block}{Lock-free pop}
+\begin{lstlisting}[style=customc]
+bool pop(int& t) {
+    Node* current = head;
+    while(current) {
+        if(cas(&head, current->next, current)) {
+            t = current->data;
+            return true;
+        }
+        current = head;
+    }
+    return false;
+}
+\end{lstlisting}
+\end{block}
 
 \end{frame}
 
-\begin{frame}{When to use lock-free programming}
+\begin{frame}[allowframebreaks]{When to use lock-free programming}
+    \begin{block}{Cons}
+    \begin{itemize}
+        \item Implementation is tricky and difficult
+        \item ABA Problem
+        \item Lock-free is not wait-free
+        \item No guarentee that a thread will terminate (it may wait forever)
+        \item Memmory barriers are needed
+    \end{itemize}
+    \end{block}
 
+    \begin{block}{Pros}
+    \begin{itemize}
+        \item Can improve speed (e.g. in liked lists where long traversals can occur)
+        \item Easily scalable to an arbitrary number of threads
+        \item Can prevent priority inversion
+        \item \textcolor{ReneOrange}{No deadlocks!}
+        \item Useful when lock are not available for shared data (e.g. interrupt handlers)
+    \end{itemize}
+    \end{block}
+    
+    \begin{exampleblock}{Conclusion}
+        Should only be used as a last resort, but can be very powerfull when implemented properly
+    \end{exampleblock}
 \end{frame}
