@@ -1,14 +1,17 @@
 \begin{frame}{Recap: Shared memory, mutex' and locks.}
+	\begin{block}{Dangers in multithreading}
+	Using shared memory and writing to it can cause \textcolor{ReneOrange}{race conditions}.
+	\end{block}
 	\begin{block}{Lock}
 		A mechanism to prevent multiple threads of accessing the same resource at the same time. 
+		Typically implemented with a \textcolor{ReneOrange}{mutex}. 
 	\end{block}
-	Typically implemented with a mutex. 
 
 	\begin{exampleblock}<2>{Problems:}
 		\begin{itemize}
-			\item Overhead;
-			\item Deadlocks;
-			\item Priority inversion.
+			\item Overhead
+			\item Deadlocks
+			\item Priority inversion
 		\end{itemize}
 	\end{exampleblock}
 

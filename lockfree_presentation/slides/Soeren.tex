@@ -1,31 +1,27 @@
-\begin{frame}{What are lock-free datastructures?}
+\begin{frame}[fragile, allowframebreaks]{What are lock-free datastructures?}
 	\begin{block}{Compared to locked-datastructures}
 		\begin{itemize}
 			\item Datastructure using a standard \textcolor{ReneOrange}{read}.
 			\item \textcolor{ReneOrange}{Updating} is another story.
-			\item Atomic Read-Mody-Write Operation
+			\item Atomic Read-Modify-Write Operation
 			\item Help from hardware
 		\end{itemize}
 	\end{block}
+
+\begin{block}{Compare-and-Swap}
+\begin{lstlisting}[style=customc]
+bool CAS(int* addr, int expected, int value) {
+	if (*addr == expected) {
+	  *addr = value;
+	  return true;
+	}
+	return false;
+} 
+\end{lstlisting}
+\end{block}
 \end{frame}
 
-\begin{frame}[fragile]{What are lock-free datastructures?}
-	\framesubtitle{Compare and Swap}
-	\begin{block}	
-		\begin{lstlisting}[style=customc]
-		bool CAS(int* addr, int expected, int value) {
-			if (*addr == expected) {
-			  *addr = value;
-			  return true;
-			}
-			return false;
-		} 
-		\end{lstlisting}
-	\end{block}
-\end{frame}
-
-\begin{frame}
-
+\begin{frame}{Implications of being lock-free}
 	\begin{block}{What does this mean for the multi-threaded programs?}
 		\begin{itemize}
 			\item Reading can always be done, no thread or process have a \textcolor{ReneOrange}{lock} on it.
