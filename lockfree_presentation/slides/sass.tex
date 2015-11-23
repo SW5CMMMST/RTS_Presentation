@@ -24,7 +24,7 @@ void push(int data) {
 \begin{lstlisting}[style=customc]
 bool pop(int &data) {
     Node* current = head;
-    while(current) {
+    while(current != null) { 
         if(CAS(&head, current, current->next)) {
             data = current->data;
             return true;
@@ -43,16 +43,16 @@ bool pop(int &data) {
     \begin{itemize}
         \item Implementation is tricky and difficult
         \item ABA Problem
-        \item Lock-free is not wait-free
+        \item Lock-free is \textcolor{ReneOrange}{not wait-free}
         \item No guarentee that a thread will terminate (it may wait forever)
-        \item Memmory barriers are needed
+        \item \textcolor{ReneOrange}{Memmory barriers} are needed
     \end{itemize}
     \end{block}
 
     \begin{block}{Pros}
     \begin{itemize}
         \item Can improve speed (e.g. in liked lists where long traversals can occur)
-        \item Easily scalable to an arbitrary number of threads
+        \item Easily \textcolor{ReneOrange}{scalable} to an arbitrary number of threads
         \item Can prevent priority inversion
         \item \textcolor{ReneOrange}{No deadlocks!}
         \item Useful when lock are not available for shared data (e.g. interrupt handlers)
