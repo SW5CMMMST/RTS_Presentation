@@ -11,22 +11,22 @@ Node * head; //Stable stack head
 
 \begin{block}{Lock-free push}
 \begin{lstlisting}[style=customc]
-void push(int t) {
-    Node* node = new Node(t);
+void push(int data) {
+    Node* node = new Node(data);
     do {
         node->next = head;
-    } while (!cas(&head, node, node->next));
+    } while (!CAS(&head, node->next, node));
 }
 \end{lstlisting}
 \end{block}
 
 \begin{block}{Lock-free pop}
 \begin{lstlisting}[style=customc]
-bool pop(int& t) {
+bool pop(int &data) {
     Node* current = head;
     while(current) {
-        if(cas(&head, current->next, current)) {
-            t = current->data;
+        if(CAS(&head, current, current->next)) {
+            data = current->data;
             return true;
         }
         current = head;
