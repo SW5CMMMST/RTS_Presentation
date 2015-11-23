@@ -1,0 +1,38 @@
+\begin{frame}{What are lock-free datastructures?}
+	\begin{block}{Compared to locked-datastructures}
+		\begin{itemize}
+			\item Datastructure using a standard \textcolor{ReneOrange}{read}.
+			\item \textcolor{ReneOrange}{Updating} is another story.
+			\item Atomic Read-Mody-Write Operation
+			\item Help from hardware
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{What are lock-free datastructures?}
+	\framesubtitle{Compare and Swap}
+	\begin{block}	
+		\begin{lstlisting}[style=customc]
+		bool CAS(int* addr, int expected, int value) {
+			if (*addr == expected) {
+			  *addr = value;
+			  return true;
+			}
+			return false;
+		} 
+		\end{lstlisting}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+
+	\begin{block}{What does this mean for the multi-threaded programs?}
+		\begin{itemize}
+			\item Reading can always be done, no thread or process have a \textcolor{ReneOrange}{lock} on it.
+			\item One thread or process will always progress
+			\item Can give an increase in performance when mostly reading
+			\item If many threads or processes are trying to update, it might be very slow
+			\item \textcolor{ReneOrange}{Starvation} can still occur
+		\end{itemize}
+	\end{block}
+\end{frame}
