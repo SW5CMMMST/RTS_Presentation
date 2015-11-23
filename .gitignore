@@ -50,6 +50,7 @@ master.pdf
 *.fdb_latexmk
 *.vrb
 *.un*
+*.fls
 
 master.thm
 
